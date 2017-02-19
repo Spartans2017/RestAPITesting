@@ -1,4 +1,6 @@
-var chakram = require('./../lib/chakram.js'),
+var helper = require('../helper/custom_methods.js');
+
+var chakram = require('chakram'),
     expect = chakram.expect;
 
 describe("** Jsonplaceholder webpage rest api testing **", function () {
@@ -10,7 +12,7 @@ describe("** Jsonplaceholder webpage rest api testing **", function () {
             for (var i = 0, len = response.body.length; i < len; i++) {
                 idList.push(response.body[i].id);
             }
-            randomId = chakram.getRandomValue(idList);
+            randomId = helper.getRandomValue(idList);
         });
     });
 
@@ -31,7 +33,7 @@ describe("** Jsonplaceholder webpage rest api testing **", function () {
      * Test#2: Verify correct email format of the user from test #1
      */
     it("should check the correct email format", function () {
-        expect(chakram.checkEmailFormat(email)).to.equal(true);
+        expect(helper.checkEmailFormat(email)).to.equal(true);
         return chakram.wait();
     });
 
